@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Raven Mott — Portfolio</title>
+  <meta name="description" content="Raven Mott — Computer Science @ VSU (’26). Android/Kotlin, AI/ML, data science, cybersecurity. Projects: Gestura (ASL), CropNet climate-yield, Malware Analysis pipeline, BitFit, Flixster." />
+  <meta property="og:title" content="Raven Mott — Portfolio" />
+  <meta property="og:description" content="Android/Kotlin • AI/ML • Data Science • Cybersecurity" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121833;
+      --muted: #9aa4bf;
+      --text: #e6e9f5;
+      --brand: #0ea5e9;
+      --brand-2: #a78bfa;
+      --ok: #22c55e;
+      --warn: #f59e0b;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    @media (prefers-color-scheme: light) {
+      :root { --bg:#f7f8fc; --panel:#ffffff; --text:#0f1222; --muted:#5b6173; }
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text); background: radial-gradient(1200px 600px at 85% -10%, rgba(14,165,233,.15), transparent 60%),
+               radial-gradient(800px 400px at 10% -5%, rgba(167,139,250,.15), transparent 60%), var(--bg);
+    }
+    .wrap { width: min(1100px, 92%); margin: 0 auto; }
+    header {
+      position: sticky; top: 0; z-index: 50; backdrop-filter: blur(8px);
+      background: color-mix(in oklab, var(--bg), transparent 30%);
+      border-bottom: 1px solid color-mix(in oklab, var(--panel), var(--text) 8%);
+    }
+    .nav { display:flex; align-items:center; justify-content:space-between; padding:14px 0; }
+    .brand { display:flex; gap:10px; align-items:center; font-weight:700; letter-spacing:.3px; }
+    .dot { width:12px; height:12px; border-radius:50%; background:linear-gradient(45deg,var(--brand),var(--brand-2)); box-shadow:0 0 0 4px rgba(14,165,233,.15); }
+    .nav a { color: var(--muted); text-decoration:none; margin-left: 18px; font-weight:600; }
+    .nav a:hover { color: var(--text); }
+    .btn { display:inline-flex; align-items:center; gap:10px; background:linear-gradient(45deg,var(--brand),var(--brand-2));
+           color:#fff; padding:10px 14px; border-radius:999px; box-shadow: var(--shadow); border:none; cursor:pointer; font-weight:700; }
+    .btn.secondary { background:transparent; border:1px solid color-mix(in oklab, var(--brand), #fff 10%); color: var(--text); box-shadow:none; }
+
+    /* Hero */
+    .hero { display:grid; grid-template-columns: 1.2fr .8fr; gap: 28px; align-items:center; padding: 56px 0 32px; }
+    .badge { display:inline-flex; align-items:center; gap:8px; border:1px solid color-mix(in oklab, var(--panel), #fff 12%);
+             border-radius:999px; padding:6px 10px; color:var(--muted); font-weight:600; }
+    h1 { font-size: clamp(28px, 4.5vw, 48px); line-height:1.1; margin: 10px 0 12px; }
+    p.lead { font-size: clamp(16px, 1.8vw, 18px); color: var(--muted); margin: 0 0 20px; }
+    .hero-card { background: color-mix(in oklab, var(--panel), var(--bg) 35%); border:1px solid color-mix(in oklab, var(--panel), #fff 10%);
+                 padding: 20px; border-radius: var(--radius); box-shadow: var(--shadow); }
+    .chips { display:flex; flex-wrap: wrap; gap:8px; margin: 14px 0 24px; }
+    .chip { padding:6px 10px; border-radius:999px; background: color-mix(in oklab, var(--panel), #fff 8%);
+            border:1px solid color-mix(in oklab, var(--panel), #fff 10%); color:var(--muted); font-weight:600; }
+
+    /* Sections */
+    section { padding: 40px 0; }
+    .section-title { font-size: clamp(20px, 2.6vw, 28px); margin: 0 0 18px; }
+    .grid { display:grid; gap: 16px; }
+    .grid.cards { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .card { background: var(--panel); border:1px solid color-mix(in oklab, var(--panel), #fff 8%); border-radius: var(--radius); box-shadow: var(--shadow); padding: 18px; }
+    .card h3 { margin: 0 0 8px; font-size: 18px; }
+    .card p { margin: 0; color: var(--muted); }
+    .meta { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+    .meta span { font-size: 12px; color: var(--muted); border:1px dashed color-mix(in oklab, var(--panel), #fff 14%); border-radius:999px; padding:4px 8px; }
+
+    /* Footer */
+    footer { border-top:1px solid color-mix(in oklab, var(--panel), #fff 10%); color:var(--muted); padding: 30px 0 60px; }
+
+    /* Small screens */
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; }
+      .nav a { margin-left:12px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand"><span class="dot" aria-hidden="true"></span> Raven Mott</div>
+      <nav aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#research">Research</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+        <a class="btn secondary" href="https://github.com/Rmot1202" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div>
+        <span class="badge" title="Virginia State University">CS @ VSU ’26 • Honors</span>
+        <h1>Android • AI/ML • Cybersecurity<br />I build inclusive, data‑driven tools.</h1>
+        <p class="lead">I’m Raven Mott — a Computer Science student focused on mobile AI (Jetpack Compose, TFLite), data science, and secure systems. Current flagship: <strong>Gestura</strong>, an AI‑powered ASL translator app.</p>
+        <div class="chips" role="list" aria-label="Skills">
+          <span class="chip" role="listitem">Kotlin / Compose</span>
+          <span class="chip" role="listitem">Python • ML</span>
+          <span class="chip" role="listitem">TensorFlow / TFLite</span>
+          <span class="chip" role="listitem">FastAPI</span>
+          <span class="chip" role="listitem">Docker</span>
+          <span class="chip" role="listitem">R / Data Viz</span>
+          <span class="chip" role="listitem">GitHub Actions</span>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn" href="#projects">See Projects</a>
+          <a class="btn secondary" href="https://www.linkedin.com/in/raven1202" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn secondary" href="#resume" onclick="document.getElementById('resume-note').scrollIntoView({behavior:'smooth'}); return false;">Resume</a>
+        </div>
+      </div>
+      <div class="hero-card" aria-label="Key stats">
+        <h2 style="margin:0 0 10px;font-size:20px;">Highlights</h2>
+        <ul style="margin:0;padding-left:18px;color:var(--muted)">
+          <li>IBM SkillsBuild Cohort Lead (Fall ’25)</li>
+          <li>MS‑CC Undergraduate Research — Climate & Yield</li>
+          <li>Senior Project I @ VSU — <em>Gestura</em></li>
+          <li>Accepted to multiple research programs & fellowships</li>
+        </ul>
+        <div class="meta" style="margin-top:14px;">
+          <span>Security & ML</span>
+          <span>HPC & Data</span>
+          <span>Community Mentor</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2 class="section-title">About</h2>
+      <div class="card">
+        <p>Driven by accessibility and impact, I design systems that connect people across barriers — from sign‑language translation to climate‑aware agriculture. I enjoy end‑to‑end building: data engineering → modeling → API → mobile UI.</p>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="grid cards">
+        <article class="card">
+          <h3>Gestura — ASL Translator (Android)</h3>
+          <p>Android/Compose app converting ASL gestures to natural‑language sentences and back to ASL avatar; Firebase auth, MediaPipe/TFLite pipeline, multilingual support.</p>
+          <div class="meta"><span>Kotlin</span><span>TensorFlow Lite</span><span>Firebase</span></div>
+          <p style="margin-top:10px"><a href="#" onclick="alert('Link your repo once it\'s public.');return false;">Repo (private/coming soon)</a></p>
+        </article>
+        <article class="card">
+          <h3>CropNet — Climate→Yield Modeling</h3>
+          <p>Tabular & multimodal experiments connecting WRF‑HRRR climate features to USDA county‑level yields; baselines in RF/XGB/MLP with temporal CV.</p>
+          <div class="meta"><span>Python</span><span>Pandas/Sklearn</span><span>TensorFlow</span></div>
+          <p style="margin-top:10px"><a href="https://github.com/Rmot1202/Cropnet" target="_blank" rel="noopener">GitHub Repo</a></p>
+        </article>
+        <article class="card">
+          <h3>Malware Analysis System</h3>
+          <p>Client→Controller→Docker Sandbox→VirusTotal pipeline; executes binaries in containerized sandboxes and aggregates VT intelligence.</p>
+          <div class="meta"><span>Python</span><span>Docker</span><span>VirusTotal API</span></div>
+        </article>
+        <article class="card">
+          <h3>BitFit & Flixster+ (CodePath)</h3>
+          <p>Android labs featuring health tracking and media browsing with modern Android patterns, networking, and persistence.</p>
+          <div class="meta"><span>Android</span><span>Retrofit</span><span>Room</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- RESEARCH -->
+    <section id="research">
+      <h2 class="section-title">Research & Presentations</h2>
+      <div class="grid cards">
+        <article class="card">
+          <h3>Climate Change & Agricultural Yield</h3>
+          <p>Summer ’25 MS‑CC internship — deep learning & statistical modeling for yield prediction; exploratory SHAP and spatial diagnostics.</p>
+          <div class="meta"><span>DL/ML</span><span>Time‑series</span><span>Spatial</span></div>
+        </article>
+        <article class="card">
+          <h3>Security & Forensics</h3>
+          <p>Coursework and independent study in malware behavior, sandboxing, and digital forensics pipelines with containerization.</p>
+          <div class="meta"><span>Cyber</span><span>Sandbox</span><span>Forensics</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <h2 class="section-title">Experience & Leadership</h2>
+      <div class="grid cards">
+        <article class="card">
+          <h3>IBM SkillsBuild — Cohort Lead</h3>
+          <p>Mentoring first‑year students in foundational CS and career skills; organizing learning paths and peer reviews.</p>
+          <div class="meta"><span>Mentorship</span><span>Leadership</span></div>
+        </article>
+        <article class="card">
+          <h3>VSU CS Club & Outreach</h3>
+          <p>Workshops on Android, AI/ML, and data visualization; campus tours and STEM outreach.</p>
+          <div class="meta"><span>Community</span><span>Workshops</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="card">
+        <p>Open to internships, research collaborations, and speaking invites.</p>
+        <p><strong>Email</strong>: <a href="mailto:your.email@example.com">your.email@example.com</a> • <strong>GitHub</strong>: <a href="https://github.com/Rmot1202" target="_blank" rel="noopener">Rmot1202</a> • <strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/raven1202" target="_blank" rel="noopener">raven1202</a></p>
+        <form onsubmit="event.preventDefault(); alert('This demo form is static. Hook it to Formspree, Netlify Forms, or a server.');" style="margin-top:10px; display:grid; gap:8px; max-width:560px;">
+          <label>
+            <span class="sr">Name</span>
+            <input required name="name" placeholder="Your name" style="width:100%; padding:12px 14px; border-radius:10px; border:1px solid color-mix(in oklab, var(--panel), #fff 15%); background:var(--panel); color:var(--text)" />
+          </label>
+          <label>
+            <span class="sr">Email</span>
+            <input required type="email" name="email" placeholder="you@example.com" style="width:100%; padding:12px 14px; border-radius:10px; border:1px solid color-mix(in oklab, var(--panel), #fff 15%); background:var(--panel); color:var(--text)" />
+          </label>
+          <label>
+            <span class="sr">Message</span>
+            <textarea required name="message" placeholder="Hello Raven…" rows="4" style="width:100%; padding:12px 14px; border-radius:10px; border:1px solid color-mix(in oklab, var(--panel), #fff 15%); background:var(--panel); color:var(--text)"></textarea>
+          </label>
+          <button class="btn" type="submit">Send message</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="resume">
+      <h2 class="section-title">Resume</h2>
+      <div class="card" id="resume-note">
+        <p>Place a PDF named <code>Raven_Mott_Resume.pdf</code> in the same folder and link it below:</p>
+        <p><a class="btn secondary" href="Raven_Mott_Resume.pdf" target="_blank" rel="noopener">Open Resume (PDF)</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>© <span id="year"></span> Raven Mott • Built with plain HTML/CSS/JS. Ship on GitHub Pages, Netlify, or Vercel.</p>
+    </div>
+  </footer>
+
+  <script>
+    // current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // a11y helper for labels without visible text
+    document.querySelectorAll('.sr').forEach(el=>{ el.style.position='absolute'; el.style.width='1px'; el.style.height='1px'; el.style.overflow='hidden'; el.style.clip='rect(1px,1px,1px,1px)'; el.style.whiteSpace='nowrap'; });
+  </script>
+</body>
+</html>
