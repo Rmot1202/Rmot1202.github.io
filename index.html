@@ -81,7 +81,96 @@
     @media (prefers-reduced-motion: reduce) {
       * { animation: none !important; transition: none !important; }
     }
+    /* --- GIF Slider --- */
+.gif-slider { padding: 14px; }
+.gif-slider-viewport {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: 1px solid color-mix(in oklab, var(--panel), #fff 10%);
+  background: color-mix(in oklab, var(--panel), var(--bg) 35%);
+  box-shadow: var(--shadow);
+}
+.gif-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  align-items: center;
+  transition: transform .45s ease;
+}
+.gif-slide {
+  margin: 0;
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+  padding: 12px;
+}
+.gif-slide img {
+  width: 100%;
+  height: auto;
+  max-height: 540px;
+  object-fit: contain;
+  border-radius: 12px;
+  border: 1px solid color-mix(in oklab, var(--panel), #fff 14%);
+  box-shadow: var(--shadow);
+  background: var(--panel);
+}
+.gif-slide figcaption {
+  font-size: 14px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.gif-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0;
+  width: 40px; height: 40px;
+  border-radius: 999px;
+  background: linear-gradient(45deg,var(--brand),var(--brand-2));
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  box-shadow: var(--shadow);
+}
+.gif-btn.prev { left: 10px; }
+.gif-btn.next { right: 10px; }
+.gif-btn:focus-visible { outline: 3px solid color-mix(in oklab, var(--brand), #fff 25%); }
+
+.gif-dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  padding: 10px 0 2px;
+}
+.gif-dot {
+  width: 8px; height: 8px; border-radius: 999px;
+  background: color-mix(in oklab, var(--panel), #fff 12%);
+  border: 1px solid color-mix(in oklab, var(--panel), #fff 22%);
+  cursor: pointer;
+}
+.gif-dot[aria-selected="true"] {
+  background: linear-gradient(45deg,var(--brand),var(--brand-2));
+  border-color: transparent;
+}
+
+.gif-opts { display:flex; justify-content:center; margin-top:8px; }
+.gif-toggle[aria-pressed="true"] { outline: 2px solid var(--brand); }
+
+/* Small screens */
+@media (max-width: 680px) {
+  .gif-btn { width: 34px; height: 34px; }
+}
+
+/* Respect reduced motion: no autoplay and gentler transitions */
+@media (prefers-reduced-motion: reduce) {
+  .gif-track { transition: none; }
+}
   </style>
+
 </head>
 <body>
   <header>
@@ -243,6 +332,40 @@
           <p>Android/Compose app converting ASL gestures to natural‑language sentences and back to ASL avatar; Firebase auth, MediaPipe/TFLite pipeline, multilingual support.</p>
           <div class="meta"><span>Kotlin</span><span>TensorFlow Lite</span><span>Firebase</span></div>
           <p style="margin-top:10px"><a href="https://github.com/Rmot1202/Gestura" target="_blank" rel="noopener">GitHub Repo</a></p>
+          <article class="card">
+  <div class="gif-slider" aria-label="Gestura progress gallery" data-autoplay="true" data-interval="3500">
+    <h3 style="margin:0 0 8px; font-size:18px;">Gestura — Progress GIFs</h3>
+
+    <div class="gif-slider-viewport">
+      <button class="gif-btn prev" type="button" aria-label="Previous slide">‹</button>
+
+      <div class="gif-track">
+        <figure class="gif-slide is-active">
+          <img src="media/login.gif" alt="Login flow and bottom navigation coming online" loading="lazy" />
+          <figcaption>Milestone — Login + Bottom Navigation</figcaption>
+        </figure>
+
+        <figure class="gif-slide">
+          <img src="media/Lang.gif" alt="Language Translation screen with text and voice input" loading="lazy" />
+          <figcaption>Milestone — Language Translation module</figcaption>
+        </figure>
+
+        <figure class="gif-slide">
+          <img src="media/bottom%20nav.gif" alt="ASL Translation page with upload and processing UI" loading="lazy" />
+          <figcaption>Milestone — ASL Upload & Translate UI</figcaption>
+        </figure>
+      </div>
+
+      <button class="gif-btn next" type="button" aria-label="Next slide">›</button>
+    </div>
+
+    <div class="gif-dots" role="tablist" aria-label="Slide navigation dots"></div>
+    <div class="gif-opts">
+      <button class="btn secondary gif-toggle" type="button" aria-pressed="false">Auto-play</button>
+    </div>
+  </div>
+</article>
+
         </article>
         <article class="card">
           <h3>AI‑Powered Food Navigation Web App</h3>
